@@ -9,14 +9,14 @@ Nous avons choisi de proposer un service de messagerie. Décomposé en 2 program
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
-
 ### Côté client
 
 Blalbalalbalalba
 
 ### Côté serveur
+
+```markdown
+Syntax highlighted code block
 
 bvalblalbalblabalalabl
 
