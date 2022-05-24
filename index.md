@@ -1,11 +1,11 @@
-# ![Image](https://media.discordapp.net/attachments/898144992365801494/977961760772468756/unknown.png?width=580&height=580)
+## ![Image](https://media.discordapp.net/attachments/898144992365801494/977961760772468756/unknown.png?width=580&height=580)
 
 ## Discord.java
 
 L'objectif du projet était d'héberger un service sur un Docker.
 Nous avons choisi de proposer un service de messagerie. Décomposé en 2 programmes : Un programme qui tourne sur le Docker et gère les connexions entre les différents clients; Une application téléchargeable qui sert d'interface pour chaque client.
 
-### Utilisation
+## Utilisation
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
