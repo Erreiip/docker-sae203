@@ -236,7 +236,7 @@ public class Client extends Thread{
                 if ( code.equals("002: ") ) {
 
                     if (lignes.equals( "OK" ) ) {
-                        this.ihmServeur.setVisible( true );;
+                        this.ihmServeur.setVisible( true );
                         this.ihm.setVisible( false );
                     }
                 }
