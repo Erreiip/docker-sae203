@@ -16,7 +16,7 @@ RUN cp -r root/sae/html /var/www/
 
 RUN mv /root/sae/class /root/
 
-ENV CLASSPATH=/root/libs/gson-2.8.2.jar:.
+ENV CLASSPATH=/root/class/libs/gson-2.8.2.jar:.
 
 #Exposer le port 80
 EXPOSE 80
