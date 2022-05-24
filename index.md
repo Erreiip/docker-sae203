@@ -1,19 +1,24 @@
-## Welcome to GitHub Pages
+# ![Image](https://media.discordapp.net/attachments/898144992365801494/977961760772468756/unknown.png?width=580&height=580)
 
-You can use the [editor on GitHub](https://github.com/Erreiip/sae203-docker-eq1/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Discord.java
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+L'objectif du projet était d'héberger un service sur un Docker.
+Nous avons choisi de proposer un service de messagerie. Décomposé en 2 programmes : Un programme qui tourne sur le Docker et gère les connexions entre les différents clients; Une application téléchargeable qui sert d'interface pour chaque client.
 
-### Markdown
+### Utilisation
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
 Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+### Côté client
+
+Blalbalalbalalba
+
+### Côté serveur
+
+bvalblalbalblabalalabl
 
 - Bulleted
 - List
@@ -32,6 +37,6 @@ For more details see [Basic writing and formatting syntax](https://docs.github.c
 
 Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Erreiip/sae203-docker-eq1/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+### Crédits
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Équipe 1 : [AIREY Théo](https://github.com/Ciliste), [LE MEUR Pierre](https://github.com/Erreiip), [SAHUC Maxime](https://github.com/ValrodClient)
