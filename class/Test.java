@@ -12,6 +12,6 @@ public class Test {
         System.out.println(file.toString());
         System.out.println(file.exists());
 
-        GuildManager.creerServeur("test", "test");
+        GuildManager.creerServeur("test2", "test2");
     }
 }
