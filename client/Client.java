@@ -20,7 +20,7 @@ import java.io.*;
 public class Client extends Thread{
 
     private static final int    PORT = 6969; 
-    private static final String HOST = "c-di-712-02";     
+    private static final String HOST = "di-docker";     
 
 
     private Frame        ihm;
@@ -66,7 +66,7 @@ public class Client extends Thread{
 
         try {
 
-            PrintWriter pr = new PrintWriter( "client/infos/pseudo.txt");
+            PrintWriter pr = new PrintWriter( "./client/infos/pseudo.txt");
             pr.print(pseudo);
             pr.close();
 
@@ -85,7 +85,7 @@ public class Client extends Thread{
         try {
             String nbConexions = "";
 
-            Scanner sc = new Scanner ( new FileReader( "client/infos/nombreConnexions.txt" ));
+            Scanner sc = new Scanner ( new FileReader( "./client/infos/nombreConnexions.txt" ));
 
             if ( sc.hasNextLine() ) 
                 nbConexions  = sc.nextLine();
@@ -93,7 +93,7 @@ public class Client extends Thread{
 
             if ( nbConexions.equals("0") ) {
                 
-                PrintWriter pr = new PrintWriter( "client/infos/nombreConnexions.txt" );
+                PrintWriter pr = new PrintWriter( "./client/infos/nombreConnexions.txt" );
                 pr.print("1");
                 pr.close();
                 sc.close();
