@@ -11,11 +11,15 @@ Nous avons pour ce projet dévellopé en java (petite référence dans le nom de
 Le serveur utilise un thread pour gérer les différents client qui pourraient si connecter.
 
 ### Protocole
+//mettre l'image du serveur
 
 ## Utilisation
 ### Côté client
 
-Le client est instalable depuis ce [lien](https://github.com/Erreiip/sae203-docker-eq1/tree/appli).
+Le client est instalable depuis ce [lien](https://github.com/Erreiip/sae203-docker-eq1/tree/appli).  
+Il peut être lancé via  
+`java -jar discord.jar`
+
 
 Une fois installé et lancé vous apparaiterez sur cette page   
 ![Image](https://cdn.discordapp.com/attachments/898144992365801494/978902768507047996/unknown.png)  
