@@ -15,6 +15,9 @@ import java.nio.file.Paths;
 
 import libs.UtilsJSON;
 
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
 public class GuildManager {
 
     private static Map<Integer, List<String>> membres = new HashMap<Integer, List<String>>();
@@ -87,7 +90,11 @@ public class GuildManager {
                     Map.class);
 
             List<Message> messages = (List<Message>) data.get("messages");
-            messages.add(new Message(pseudo, "0", message));
+            messages.add(new Message(
+                pseudo, 
+                DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now()).toString(), 
+                message
+            ));
 
             PrintWriter fichier = new PrintWriter(new FileOutputStream(
                     new File("serveur/guilds/" + GuildManager.hashCode(serveur, mdp) + ".json")));
