@@ -7,7 +7,7 @@ Nous avons choisi de proposer un service de messagerie. Décomposé en 2 program
 
 ## Technique
 
-Nous avons pour ce projet dévellopé en java (petite référence dans le nom de l'application), nous avons utilisé la librairie java.net.Socket pour créer des connexions entre les différents et le serveur.
+Nous avons pour ce projet dévellopé en java (petite référence dans le nom de l'application), nous avons utilisé la librairie java.net.Socket pour créer des connexions entre les différents et le serveur.  
 Le serveur utilise un thread pour gérer les différents client qui pourraient si connecter.
 
 ### Côté client
