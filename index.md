@@ -10,6 +10,7 @@ Nous avons choisi de proposer un service de messagerie. Décomposé en 2 program
 Nous avons pour ce projet dévellopé en java (petite référence dans le nom de l'application), nous avons utilisé la librairie java.net.Socket pour créer des connexions entre les différents et le serveur.  
 Le serveur utilise un thread pour gérer les différents client qui pourraient si connecter.
 
+## Utilisation
 ### Côté client
 
 Le client est instalable depuis ce [lien](https://github.com/Erreiip/sae203-docker-eq1/tree/appli).
