@@ -15,7 +15,9 @@ Pour ce projet nous avons utilisé un protocole de communication :
 - 002 [nom \ serveur \ mdp ] : rejoindre un serveur
 - 003 [texte]                : envoyer un message
 - 004 [nom \ serveur \ mdp ] : creer un serveur
-- 006 
+- 006 [messages]             : messages du serveur
+- 007 [noms]                 : noms des personnes sur le serveur
+- 069 : quitter le serveur
 
 ## Utilisation
 ### Côté client
