@@ -20,7 +20,7 @@ import java.io.*;
 public class Client extends Thread{
 
     private static final int    PORT = 6969; 
-    private static final String HOST = "c-di-712-02";     
+    private static final String HOST = "di-docker";     
 
 
     private Frame        ihm;
