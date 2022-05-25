@@ -22,7 +22,7 @@ Il peut être lancé via
 
 
 Une fois installé et lancé vous apparaiterez sur cette page   
-![Image](https://cdn.discordapp.com/attachments/898144992365801494/978902768507047996/unknown.png)  
+![Image](https://camo.githubusercontent.com/1e16199c9da1a90d414b0a025f82f4d4c26cd507502bfbb5bc7b876709a51fe3/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f3839383134343939323336353830313439342f3937383930323736383530373034373939362f756e6b6e6f776e2e706e67)  
 Vous pourrez valider votre pseudo en tapant sur entrée ce qui vous amènera sur la page d'acceuil où vous pourrez créer ou rejoindre des serveurs avec vos amis !  
 ![Image](https://cdn.discordapp.com/attachments/887974157550235658/978904849540350002/unknown.png)
 
