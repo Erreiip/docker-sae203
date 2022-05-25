@@ -10,7 +10,9 @@ RUN  apt-get update &&  \
 
 
 # Copier les fichiers de l'hôte vers l'image
-COPY ./ root/sae
+RUN git clone https://github.com/Erreiip/sae203-docker-eq1.git
+
+RUN mv sae203-docker-eq1/ root/sae
 
 RUN cp -r root/sae/html /var/www/
 
@@ -25,4 +27,3 @@ EXPOSE 6969
 # Lancer le service apache au démarrage du conteneur
 RUN chmod +x root/sae/run.sh
 CMD ["/bin/bash", "root/sae/run.sh"]
-
