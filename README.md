@@ -10,7 +10,7 @@
 `docker build -t <nom de votre image> .`  
 
 - Lancez l'image du Docker :  
-`docker run --name <nom de votre Docker> -d -p <port du Docker>:80 <nom de l'image>`  
+`docker run --name <nom de votre Docker> -d -p 6969:6969 <nom de l'image>`  
 
 ## Bravo, Le Docker est lancé !
 
