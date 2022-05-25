@@ -26,6 +26,9 @@ L'image du docker installe et lance automatiquement le script du serveur depuis 
 Le script est capable de gérer plusieurs utilisateurs répartis sur plusieurs serveurs (appelés "guilds" dans le code source) possédant chacun leur propre discussion.
 Un serveur se caractérise par son nom et un mot de passe (optionnel). 
 
+On a utilisé une librairie pour stocker les discussions en fichier .json, si le serveur redémarre, les données sont conservés.
+Un fichier par serveur qui stocke le nom, le mot de passe (pas foufou niveau sécurité) et sa discussion représentée par une liste d'objet Message (auteur, contenu et date).
+
 ```markdown
 Syntax highlighted code block
 
