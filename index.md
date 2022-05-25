@@ -1,4 +1,4 @@
-## ![Image](https://media.discordapp.net/attachments/898144992365801494/977961760772468756/unknown.png?width=580&height=580)
+## ![Image](https://media.discordapp.net/attachments/898144992365801494/977961760772468756/unknown.png?width=580&height=256)
 
 ## Discord.java
 
@@ -7,24 +7,26 @@ Nous avons choisi de proposer un service de messagerie. Décomposé en 2 program
 
 ## Technique
 
-Nous avons pour ce projet dévellopé en java (petite référence dans le nom de l'application), nous avons utilisé la librairie java.net.Socket pour créer des connexions entre les différents et le serveur.  
-Le serveur utilise un thread pour gérer les différents client qui pourraient si connecter.
+Nous avons pour ce projet dévellopé en Java (petite référence dans le nom de l'application), nous avons utilisé la librairie `java.net.Socket` pour créer des connexions entre les différents clients et le serveur.  
+Le serveur dédie un Thread pour créer de nouveaux Threads dédiés à chaques clients.
 
 ### Protocole
-Pour ce projet nous avons utilisé un protocole de communication :
-- 002 [nom \ serveur \ mdp ] : rejoindre un serveur
-- 003 [texte]                : envoyer un message
-- 004 [nom \ serveur \ mdp ] : creer un serveur
-- 006 [messages]             : messages du serveur
-- 007 [noms]                 : noms des personnes sur le serveur
-- 069 : quitter le serveur
+
+Pour ce projet nous avons élaboré un protocole de communication par des codes :
+- 002 [pseudo \ serveur \ mdp ] : rejoindre un serveur
+- 003 [texte]                   : envoyer un message
+- 004 [nom \ serveur \ mdp ]    : creer un serveur
+- 006 [messages]                : listes des messages d'une discussion
+- 007 [noms]                    : noms des membres d'une discussion
+- 069                           : déconnexion du serveur
 
 ## Utilisation
+
 ### Côté client
 
 Le client est instalable depuis ce [lien](https://mega.nz/file/0AhWzBSI#I09liI1a0ZoIwbYFJb0RD6ZZLisH_tNjH0sdyqshafo).  
-Il peut être lancé via  
-`java -jar discord.jar`
+Il peut être lancé via :
+`java -jar <chemin>/discord.jar`
 
 
 Une fois installé et lancé vous apparaiterez sur cette page   
