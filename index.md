@@ -11,7 +11,7 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 
 ### Côté client
 
-Blalbalalbalalba
+Le client est instalable deouis ce lien [Link]()
 
 ### Côté serveur
 
