@@ -1,0 +1,7 @@
+./libs/UtilsJSON.java
+
+./serveur/objet/Message.java
+./serveur/ClientManager.java
+./serveur/ConnectionManager.java
+./serveur/GuildManager.java
+./serveur/Serveur.java

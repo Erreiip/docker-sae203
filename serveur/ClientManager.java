@@ -108,7 +108,7 @@ public class ClientManager extends Thread {
 
                             this.send("004: OK");
                             GuildManager.post(
-                                    String.format("[%s]", this.guild.toUpperCase()),
+                                    String.format("[%s]", this.guild),
                                     this.guild,
                                     this.mdp,
                                     String.format("%s a rejoint le %s", this.pseudo, this.guild));
