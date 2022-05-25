@@ -26,8 +26,33 @@ L'image du docker installe et lance automatiquement le script du serveur depuis 
 Le script est capable de gérer plusieurs utilisateurs répartis sur plusieurs serveurs (appelés "guilds" dans le code source) possédant chacun leur propre discussion.
 Un serveur se caractérise par son nom et un mot de passe (optionnel). 
 
-On a utilisé une librairie pour stocker les discussions en fichier .json, si le serveur redémarre, les données sont conservés.
-Un fichier par serveur qui stocke le nom, le mot de passe (pas foufou niveau sécurité) et sa discussion représentée par une liste d'objet Message (auteur, contenu et date).
+On a utilisé une librairie pour stocker les discussions en fichier .json, si le serveur redémarre, les données sont conservées.
+Un fichier par "guild" qui stocke le nom, le mot de passe (pas foufou niveau sécurité) et sa discussion représentée par une liste d'objet Message (auteur, contenu et date).
+
+Exemple d'une "guild" :
+```json
+{
+    "nom": "Serveur TEST",
+    "message":[
+        {
+            "auteur": "Théo",
+            "contenu": "Salut !",
+            "date": "0"
+        },
+        {
+            "auteur": "Maxime",
+            "contenu": "Bonjour.",
+            "date": "0"
+        },
+        {
+            "auteur": "Pierre",
+            "contenu": "Sheeesh",
+            "date": 0
+        }
+    ],
+    "mdp": "Mot de passe TEST"
+}
+```
 
 ```markdown
 Syntax highlighted code block
