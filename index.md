@@ -33,7 +33,7 @@ Exemple d'une "guild" :
 ```json
 {
     "nom": "Serveur TEST",
-    "message":[
+    "messages":[
         {
             "auteur": "Théo",
             "contenu": "Salut !",
@@ -47,12 +47,14 @@ Exemple d'une "guild" :
         {
             "auteur": "Pierre",
             "contenu": "Sheeesh",
-            "date": 0
+            "date": "0"
         }
     ],
     "mdp": "Mot de passe TEST"
 }
 ```
+
+Le fonctionnement du serveur consiste en un Thread qui accepte en boucle les nouveaux clients, puis lance pour chacun une nouvelle instance d'un Thread.
 
 ```markdown
 Syntax highlighted code block
