@@ -22,7 +22,7 @@ Pour ce projet nous avons utilisé un protocole de communication :
 ## Utilisation
 ### Côté client
 
-Le client est instalable depuis ce [lien](https://github.com/Erreiip/sae203-docker-eq1/tree/appli).  
+Le client est instalable depuis ce [lien](https://mega.nz/file/0AhWzBSI#I09liI1a0ZoIwbYFJb0RD6ZZLisH_tNjH0sdyqshafo).  
 Il peut être lancé via  
 `java -jar discord.jar`
 
