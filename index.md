@@ -5,9 +5,10 @@
 L'objectif du projet était d'héberger un service sur un Docker.
 Nous avons choisi de proposer un service de messagerie. Décomposé en 2 programmes : Un programme qui tourne sur le Docker et gère les connexions entre les différents clients; Une application téléchargeable qui sert d'interface pour chaque client.
 
-## Utilisation
+## Technique
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Nous avons pour ce projet dévellopé en java (petite référence dans le nom de l'application), nous avons utilisé la librairie java.net.Socket pour créer des connexions entre les différents et le serveur.
+Le serveur utilise un thread pour gérer les différents client qui pourraient si connecter.
 
 ### Côté client
 
