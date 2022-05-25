@@ -11,7 +11,11 @@ Nous avons pour ce projet dévellopé en java (petite référence dans le nom de
 Le serveur utilise un thread pour gérer les différents client qui pourraient si connecter.
 
 ### Protocole
-//mettre l'image du serveur
+Pour ce projet nous avons utilisé un protocole de communication :
+- 002 [nom \ serveur \ mdp ] : rejoindre un serveur
+- 003 [texte]                : envoyer un message
+- 004 [nom \ serveur \ mdp ] : creer un serveur
+- 006 
 
 ## Utilisation
 ### Côté client
