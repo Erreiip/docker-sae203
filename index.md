@@ -36,11 +36,11 @@ Vous pourrez valider votre pseudo en tapant sur entrée ce qui vous amènera sur
 
 ### Côté serveur
 
-L'image du docker installe et lance automatiquement le script du serveur depuis ce [repo GitHub]().
+L'image du docker installe et lance automatiquement le script du serveur depuis ce [repo GitHub](https://github.com/Erreiip/docker-sae203/tree/dev/serveur).
 Le script est capable de gérer plusieurs utilisateurs répartis sur plusieurs serveurs (appelés "guilds" dans le code source) possédant chacun leur propre discussion.
 Un serveur se caractérise par son nom et un mot de passe (optionnel). 
 
-On a utilisé une librairie pour stocker les discussions en fichier .json, si le serveur redémarre, les données sont conservées.
+On a utilisé une librairie pour stocker les discussions en fichier .json ([Gson](https://github.com/google/gson)), si le serveur redémarre, les données sont conservées.
 Un fichier par "guild" qui stocke le nom, le mot de passe (pas foufou niveau sécurité) et sa discussion représentée par une liste d'objet Message (auteur, contenu et date).
 
 Exemple d'une "guild" :
@@ -51,17 +51,17 @@ Exemple d'une "guild" :
         {
             "auteur": "Théo",
             "contenu": "Salut !",
-            "date": "0"
+            "date": "2022|05|25 17:07:03"
         },
         {
             "auteur": "Maxime",
             "contenu": "Bonjour.",
-            "date": "0"
+            "date": "2022|05|25 17:07:35"
         },
         {
             "auteur": "Pierre",
             "contenu": "Sheeesh",
-            "date": "0"
+            "date": "2022|05|25 23:59:59"
         }
     ],
     "mdp": "Mot de passe TEST"
@@ -69,6 +69,37 @@ Exemple d'une "guild" :
 ```
 
 Le fonctionnement du serveur consiste en un Thread qui accepte en boucle les nouveaux clients, puis lance pour chacun une nouvelle instance d'un Thread.
+Le Thread de chaque client consiste en l'écoute constante de nouvelle requête qui déclenche ensuite un algorithme qui lui répond (ou pas dans certains cas).
+Pour comprendre ce que le client demande, on fonctionne avec un système de code (détaillé plus haut).
+
+```java
+switch (code) {
+
+    case 1 -> // Recherche (pas exploité)
+    case 2 -> {
+
+        // Connexion à une guild courante
+    }
+    case 3 -> {
+
+        // Poster un message
+    }
+    case 4 -> {
+
+        // Création d'une guild
+    }
+    case 10 -> {
+
+        // Guild courante
+    }
+    case 69 -> {
+
+        // Déconnexion
+    }
+}
+```
+
+En théorie, le serveur est capable de gérer une infinité de client, en réalité, on est vite restreint par le matériel (une miriade de Thread est coûteuse en puissance de calcul).
 
 ```markdown
 Syntax highlighted code block
