@@ -237,6 +237,7 @@ public class Client extends Thread{
 
                     if (lignes.equals( "OK" ) ) {
                         this.ihmServeur.setVisible( true );
+                        this.ihmServeur.repaint();
                         this.ihm.setVisible( false );
                     }
                 }
@@ -262,7 +263,6 @@ public class Client extends Thread{
         } catch (Exception e ) {}
     }
 
-    
 
     public static void main (String[] args) {
         new Client();
