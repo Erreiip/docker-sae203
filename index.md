@@ -14,7 +14,11 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 Le client est instalable depuis ce [lien](https://github.com/Erreiip/sae203-docker-eq1/tree/appli).
 
 Une fois installé et lancé vous apparaiterez sur cette page   
-![Image](https://cdn.discordapp.com/attachments/898144992365801494/978902768507047996/unknown.png)
+![Image](https://cdn.discordapp.com/attachments/898144992365801494/978902768507047996/unknown.png)  
+Vous pourrez valider votre pseudo en tapant sur entrée ce qui vous amènera sur la page d'acceuil où vous pourrez créer ou rejoindre des serveurs avec vos amis !  
+![Image](https://cdn.discordapp.com/attachments/887974157550235658/978903836297142302/unknown.png)
+
+
 
 ### Côté serveur
 
