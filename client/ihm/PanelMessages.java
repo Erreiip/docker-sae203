@@ -82,6 +82,7 @@ public class PanelMessages extends JPanel implements ActionListener {
         if ( tmp.getText().equals("") ) return;
 
         this.client.envoyerMessage( tmp.getText() );
+        tmp.setText("");
     }
     
 }
