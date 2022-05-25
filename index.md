@@ -99,29 +99,11 @@ switch (code) {
 }
 ```
 
+Notre protocole de communication est vraiment très rudimentaire, car il est très simpliste.
+Dans tout bon protocole de requête sur une machine distante (comme curl), notre code est sensé nous retourner le résultat d'une requête. Ici ce n'est pas le cas, car les méthodes d'envoi de donnée proposées par l'Objet `java.net.Socket` n'attendent pas de réponse en retour. C'est des bouteilles envoyées en mer sans possibilité d'établir un dialogue ordonné.
+C'est assez désagreable de développer avec ce procédé.
+
 En théorie, le serveur est capable de gérer une infinité de client, en réalité, on est vite restreint par le matériel (une miriade de Thread est coûteuse en puissance de calcul).
-
-```markdown
-Syntax highlighted code block
-
-bvalblalbalblabalalabl
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Erreiip/sae203-docker-eq1/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Crédits
 
