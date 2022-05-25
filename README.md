@@ -6,5 +6,3 @@
 - allez dans un terminal, rendez vous dans le dossier /class/client puis lancez  
 `java client.Client`
 
-## Bravo, Le Docker est lancé !
-
