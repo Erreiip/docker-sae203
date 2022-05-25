@@ -13,15 +13,18 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import serveur.libs.UtilsJSON;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;  
+
+import libs.UtilsJSON;
 
 public class GuildManager {
-    
+
     private static Map<Integer, List<String>> membres = new HashMap<Integer, List<String>>();
 
     public static String recherche(String regex) {
 
-        File[] files = new File("./guilds").listFiles();
+        File[] files = new File("serveur/guilds").listFiles();
 
         String sRet = "";
         for (File file : files) {
@@ -35,9 +38,10 @@ public class GuildManager {
 
     public synchronized static boolean creerServeur(String nom, String mdp) {
 
-        File file = new File("./serveur/guilds/" + GuildManager.hashCode(nom, mdp) + ".json");
-        if (file.exists()) return false;
-        
+        File file = new File("serveur/guilds/" + GuildManager.hashCode(nom, mdp) + ".json");
+        if (file.exists())
+            return false;
+
         Map<String, Object> serveur = new HashMap<String, Object>();
 
         serveur.put("nom", nom);
@@ -45,15 +49,14 @@ public class GuildManager {
         serveur.put("messages", new ArrayList<Message>());
 
         try {
-            
-            PrintWriter fichier = new PrintWriter(new FileOutputStream(file));   
-            fichier.print(UtilsJSON.toJSON(serveur));     
+
+            PrintWriter fichier = new PrintWriter(new FileOutputStream(file));
+            fichier.print(UtilsJSON.toJSON(serveur));
             fichier.close();
 
             return true;
-        } 
-        catch (IOException exception) {
-            
+        } catch (IOException exception) {
+
             exception.printStackTrace();
             return false;
         }
@@ -61,54 +64,53 @@ public class GuildManager {
 
     public synchronized static boolean connecter(String pseudo, String serveur, String mdp) {
 
-        File[] files = new File("./serveur/guilds").listFiles();
+        File[] files = new File("serveur/guilds").listFiles();
 
         for (File file : files) {
-            if (file.isFile() && 
-                file.getName().replace(".json", "").equals(
-                    Integer.toString(GuildManager.hashCode(serveur, mdp))
-                )) {
+            if (file.isFile() &&
+                    file.getName().replace(".json", "").equals(
+                            Integer.toString(GuildManager.hashCode(serveur, mdp)))) {
 
                 GuildManager.addMembre(pseudo, serveur, mdp);
 
                 return true;
             }
         }
-        
+
         return false;
     }
 
     public synchronized static void post(String pseudo, String serveur, String mdp, String message) {
 
         try {
-            
+
             Map<String, Object> data = UtilsJSON.getFromJSON(
-                Files.readString(
-                    Paths.get("./serveur/guilds/" + GuildManager.hashCode(serveur, mdp) + ".json")
-                ),
-                Map.class
-            );
+                    Files.readString(
+                            Paths.get("serveur/guilds/" + GuildManager.hashCode(serveur, mdp) + ".json")),
+                    Map.class);
 
             List<Message> messages = (List<Message>) data.get("messages");
-            messages.add(new Message(pseudo, "0", message));
+            messages.add(new Message(
+                pseudo, 
+                DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now()).toString(), 
+                message
+            ));
 
-            PrintWriter fichier = new PrintWriter(new FileOutputStream(new File("./serveur/guilds/" + GuildManager.hashCode(serveur, mdp) + ".json")));   
-            fichier.print(UtilsJSON.toJSON(data));     
+            PrintWriter fichier = new PrintWriter(new FileOutputStream(
+                    new File("serveur/guilds/" + GuildManager.hashCode(serveur, mdp) + ".json")));
+            fichier.print(UtilsJSON.toJSON(data));
             fichier.close();
-        } 
-        catch (IOException exception) {
- 
+        } catch (IOException exception) {
+
             exception.printStackTrace();
         }
 
         try {
-        
+
             Map<String, Object> data = UtilsJSON.getFromJSON(
-                Files.readString(
-                    Paths.get("./serveur/guilds/" + GuildManager.hashCode(serveur, mdp) + ".json")
-                ),
-                Map.class
-            );
+                    Files.readString(
+                            Paths.get("serveur/guilds/" + GuildManager.hashCode(serveur, mdp) + ".json")),
+                    Map.class);
 
             List<Map<String, String>> messages = (List<Map<String, String>>) data.get("messages");
 
@@ -116,17 +118,15 @@ public class GuildManager {
             for (Map<String, String> msg : messages) {
 
                 sMsg += String.format(
-                    "%s/%s/%s", 
-                    msg.get("auteur"),
-                    msg.get("contenu"),
-                    msg.get("date")
-                ) + ":";
+                        "%s/%s/%s",
+                        msg.get("auteur"),
+                        msg.get("contenu"),
+                        msg.get("date")) + "&r3u";
             }
-            sMsg = sMsg.substring(0, sMsg.length()-2);
+            sMsg = sMsg.substring(0, sMsg.length() - 4);
 
             ConnectionManager.sendMessages(serveur, mdp, sMsg);
-        } 
-        catch (IOException exception) {
+        } catch (IOException exception) {
 
             exception.printStackTrace();
         }
@@ -134,20 +134,19 @@ public class GuildManager {
 
     public synchronized static void addMembre(String pseudo, String serveur, String mdp) {
 
-        if (GuildManager.membres.containsKey(GuildManager.hashCode(serveur, mdp))) {
+        if (GuildManager.membres.containsKey(GuildManager.hashCode(serveur, mdp)) == false) {
 
-            GuildManager.membres.get(GuildManager.hashCode(serveur, mdp)).add(pseudo);
+            GuildManager.membres.put(GuildManager.hashCode(serveur, mdp), new ArrayList<String>());
         }
 
-        System.out.println(GuildManager.membres.get(GuildManager.hashCode(serveur, mdp)));
-        List<String> membres = GuildManager.membres.get(GuildManager.hashCode(serveur, mdp));
-        
+        GuildManager.membres.get(GuildManager.hashCode(serveur, mdp)).add(pseudo);
+
         String sMembre = "";
-        for (String membre : membres) {
+        for (String membre : GuildManager.membres.get(GuildManager.hashCode(serveur, mdp))) {
 
-            sMembre += membre + "/";
+            sMembre += membre + "&r3u";
         }
-        sMembre = sMembre.substring(0, sMembre.length()-2);
+        sMembre = sMembre.substring(0, sMembre.length() - 4);
 
         ConnectionManager.sendMembres(serveur, mdp, sMembre);
     }
@@ -167,13 +166,14 @@ public class GuildManager {
         }
 
         List<String> membres = GuildManager.membres.get(GuildManager.hashCode(serveur, mdp));
-        
+
         String sMembre = "";
         for (String membre : membres) {
 
-            sMembre += membre + "/";
+            sMembre += membre + "&r3u";
         }
-        sMembre = sMembre.substring(0, sMembre.length()-2);
+        if (membres.size() > 0)
+            sMembre = sMembre.substring(0, sMembre.length() - 4);
 
         ConnectionManager.sendMembres(serveur, mdp, sMembre);
     }

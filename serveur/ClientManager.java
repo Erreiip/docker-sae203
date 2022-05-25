@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class ClientManager extends Thread {
-    
+
     private boolean enMarche = false;
 
     private Socket client;
@@ -24,15 +24,14 @@ public class ClientManager extends Thread {
         this.client = client;
 
         this.guild = this.pseudo = null;
-        
+
         try {
-            
+
             this.input = new PrintWriter(client.getOutputStream(), true);
             this.output = new BufferedReader(new InputStreamReader(client.getInputStream()));
-        } 
-        catch (IOException exception) {
+        } catch (IOException exception) {
 
-            exception.printStackTrace();   
+            exception.printStackTrace();
         }
     }
 
@@ -44,13 +43,22 @@ public class ClientManager extends Thread {
         while (this.enMarche == true) {
 
             try {
-                
-                String requete = this.output.readLine();
-                System.out.println(requete);
+
+                String requete = this.output.readLine().replace("\nnull", "");
+                if (requete == null) {
+
+                    GuildManager.delMembre(this.pseudo, this.guild, this.mdp);
+                    GuildManager.post(
+                            String.format("[%s]", this.guild),
+                            this.guild,
+                            this.mdp,
+                            String.format("%s a rejoint le %s", this.pseudo, this.guild));
+                    this.stop();
+                }
+
+                System.out.println("Requête [ " + requete + " ]");
                 int code = Integer.parseInt(requete.substring(0, 3));
                 requete = requete.substring(4);
-
-                System.out.println("" + code + " " + requete);
 
                 switch (code) {
 
@@ -58,19 +66,18 @@ public class ClientManager extends Thread {
                     case 2 -> {
 
                         String pseudo, serveur, mdp;
-                        pseudo  = requete.split("/")[0];
+                        pseudo = requete.split("/")[0];
                         serveur = requete.split("/")[1];
-                        mdp     = requete.split("/")[2];
-                        
+                        mdp = requete.split("/")[2];
+
                         if (GuildManager.connecter(pseudo, serveur, mdp)) {
 
                             this.pseudo = pseudo;
                             this.guild = serveur;
                             this.mdp = mdp;
-                            
+
                             this.send("002: OK");
-                        }
-                        else {
+                        } else {
 
                             this.send("002: NO");
                         }
@@ -80,35 +87,36 @@ public class ClientManager extends Thread {
                         if (this.guild != null) {
 
                             GuildManager.post(this.pseudo, this.guild, this.mdp, requete);
-                        }
-                        else {
+                        } else {
+
                             this.send("002: NO");
                         }
-                    } 
+                    }
                     case 4 -> {
 
                         String pseudo, nom, mdp;
                         pseudo = requete.split("/")[0];
-                        nom    = requete.split("/")[1];
-                        mdp    = requete.split("/")[1];
+                        nom = requete.split("/")[1];
+                        mdp = requete.split("/")[2];
 
                         GuildManager.creerServeur(nom, mdp);
+                        this.pseudo = pseudo;
+                        this.guild = nom;
+                        this.mdp = mdp;
 
                         if (GuildManager.connecter(pseudo, nom, mdp)) {
 
-                            this.pseudo = pseudo;
-                            this.guild  = nom;
-                            this.mdp    = mdp;
-                            
                             this.send("004: OK");
-                        }
-                        else {
-
+                            GuildManager.post(
+                                    String.format("[%s]", this.guild.toUpperCase()),
+                                    this.guild,
+                                    this.mdp,
+                                    String.format("%s a rejoint le %s", this.pseudo, this.guild));
+                        } else {
                             this.send("004: NO");
                         }
-                    }  
+                    }
                     case 6 -> {
-
 
                     }
                     case 10 -> {
@@ -121,20 +129,30 @@ public class ClientManager extends Thread {
 
                             GuildManager.delMembre(this.pseudo, this.guild, this.mdp);
                         }
+                        this.send("069: Sheeeeesh");
                     }
                 }
-            } 
-            catch (IOException exception) {
+            } catch (IOException exception) {
 
                 exception.printStackTrace();
-                continue;
+                GuildManager.post(
+                        String.format("[%s]", this.guild),
+                        this.guild,
+                        this.mdp,
+                        String.format("%s a quitté le %s", this.pseudo, this.guild));
+
+                System.out.println("Il est parti");
+                if (this.guild != null)
+                    GuildManager.delMembre(this.pseudo, this.guild, this.mdp);
+
+                this.stop();
             }
         }
     }
 
     public void sendMessages(String guild, String mdp, String messages) {
 
-        if (this.guild.equals(guild) && this.mdp.equals(mdp)) {
+        if (this.guild != null && this.guild.equals(guild) && this.mdp.equals(mdp)) {
 
             this.send("006: " + messages);
         }
@@ -142,7 +160,7 @@ public class ClientManager extends Thread {
 
     public void sendMembres(String guild, String mdp, String membres) {
 
-        if (this.guild.equals(guild) && this.mdp.equals(mdp)) {
+        if (this.guild != null && this.guild.equals(guild) && this.mdp.equals(mdp)) {
 
             this.send("007: " + membres);
         }
@@ -150,6 +168,6 @@ public class ClientManager extends Thread {
 
     private void send(String data) {
 
-        this.input.print(data);
+        this.input.println(data);
     }
 }
