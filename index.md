@@ -1,4 +1,4 @@
-## ![drawing](https://media.discordapp.net/attachments/898144992365801494/979117955210162256/Discord.png?width=256?height=256)
+## ![drawing](https://media.discordapp.net/attachments/898144992365801494/979117955210162256/Discord.png?width=256&height=256)
 
 ## Discord.java
 
