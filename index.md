@@ -20,9 +20,11 @@ Une fois installé et lancé vous apparaiterez sur cette page
 Vous pourrez valider votre pseudo en tapant sur entrée ce qui vous amènera sur la page d'acceuil où vous pourrez créer ou rejoindre des serveurs avec vos amis !  
 ![Image](https://cdn.discordapp.com/attachments/887974157550235658/978904849540350002/unknown.png)
 
-
-
 ### Côté serveur
+
+L'image du docker installe et lance automatiquement le script du serveur depuis ce [repo GitHub]().
+Le script est capable de gérer plusieurs utilisateurs répartis sur plusieurs serveurs (appelés "guilds" dans le code source) possédant chacun leur propre discussion.
+Un serveur se caractérise par son nom et un mot de passe (optionnel). 
 
 ```markdown
 Syntax highlighted code block
