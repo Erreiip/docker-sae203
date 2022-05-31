@@ -12,7 +12,7 @@ RUN  apt-get update &&  \
 # Copier les fichiers de l'hôte vers l'image
 RUN git clone https://github.com/Erreiip/docker-sae203.git
 
-RUN mv sae203-docker-eq1/ root/sae
+RUN mv docker-sae203/ root/sae
 
 RUN cp -r root/sae/html /var/www/
 
